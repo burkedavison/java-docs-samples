@@ -20,7 +20,7 @@
 package com.example.helloworld;
 
 import java.util.HashMap;
-import java.util.StringBuilder;
+import java.lang.StringBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -76,7 +76,7 @@ public class HelloworldApplication {
     SpringApplication.run(HelloworldApplication.class, args);
   }
 
-	public final static String colorize(final String ascii, final String mode) {
+	public final static String colorize(final String ascii) {
     
 		StringBuilder returnString = new StringBuilder();
 
