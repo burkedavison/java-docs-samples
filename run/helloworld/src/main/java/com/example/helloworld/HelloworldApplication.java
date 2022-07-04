@@ -28,20 +28,70 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class HelloworldApplication {
 
-  @Value("${NAME:World}")
-  String name;
+  final String logoBW = 
+  "                                                                                \n"+
+  "                                                                                \n"+
+  "                              rrrrrrrrrrrrrrrrrrrr                              \n"+
+  "                         rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr                        \n"+
+  "                      rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr                     \n"+
+  "                    rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrbb                   \n"+
+  "                  rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrbbbbbb                 \n"+
+  "                rrrrrrrrrrrrrrrrrrrrr       rrrrrrrrrrrrbbbbbbbbb               \n"+
+  "              rrrrrrrrrrrrrrrrrrr             rrrrrrrbbbbbbbbbbbbb              \n"+
+  "             rrrrrrrrrrrrrrrr                      bbbbbbbbbbbbbbbb             \n"+
+  "            rrrYYYYYYYYYYYYYYYY                      bbbbbbbbbbbbbbb            \n"+
+  "           YYYYYYYYYYYYYYYYYYYYYYY                     bbbbbbbbbbbbbb           \n"+
+  "         YYYYYYYYYYYYYYYYYYYYYYYYYYY                    bbbbbbbbbbbbbb          \n"+
+  "       YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                  bbbbbbbbbbbbbbbb        \n"+
+  "     YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                  bbbbbbbbbbbbbbbbb      \n"+
+  "    YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                    bbbbbbbbbbbbbbbbbb     \n"+
+  "   YYYYYYYYYYYYYYYYY        YYYYYYY                          bbbbbbbbbbbbbbb    \n"+
+  "  YYYYYYYYYYYYYYY              YY                               bbbbbbbbbbbbb   \n"+
+  "  YYYYYYYYYYYYYY                                                 bbbbbbbbbbbbb  \n"+
+  "  YYYYYYYYYYYYY                                                  bbbbbbbbbbbbb  \n"+
+  "  YYYYYYYYYYYYY                                                  bbbbbbbbbbbbb  \n"+
+  "  YYYYYYYYYYYYYY                                                 bbbbbbbbbbbbb  \n"+
+  "   YYYYYYYYYYYYYYY                                             bbbbbbbbbbbbbb   \n"+
+  "    YYYYYYYYYYYYYYY                                          bbbbbbbbbbbbbbb    \n"+
+  "     YYYYYYYYYYYYYGGGGGGGGGGGGGGGGGGGGGGGbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb     \n"+
+  "      YYYYYYYYYYGGGGGGGGGGGGGGGGGGGGGGGGGbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb      \n"+
+  "        YYYYYYGGGGGGGGGGGGGGGGGGGGGGGGGGGbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb        \n"+
+  "          YYGGGGGGGGGGGGGGGGGGGGGGGGGGGGGbbbbbbbbbbbbbbbbbbbbbbbbbbbbb          \n"+
+  "              GGGGGGGGGGGGGGGGGGGGGGGGGGGbbbbbbbbbbbbbbbbbbbbbbbbbb             \n"+
+  "                 GGGGGGGGGGGGGGGGGGGGGGGGbbbbbbbbbbbbbbbbbbbbbbb                \n"+
+  "                                                                                \n"+
+  "                                                                                \n";
 
   @RestController
   class HelloworldController {
     @GetMapping("/")
     String hello() {
-      return "Hello " + name + "!";
+      return colorize(logoBW);
     }
   }
 
   public static void main(String[] args) {
     SpringApplication.run(HelloworldApplication.class, args);
   }
+
+	public final static String colorize(final String ascii, final String mode) {
+    
+		StringBuilder returnString = new StringBuilder();
+
+		final HashMap<Character, String> colorGlyphs = new HashMap<>();
+
+    colorGlyphs.put('r', "🔴");
+    colorGlyphs.put('G', "💚️");
+    colorGlyphs.put('Y', "💛️");
+    colorGlyphs.put('b', "💙️");
+    colorGlyphs.put(' ', "⚪️️");
+
+		for (Character c : ascii.toCharArray()) {
+			returnString.append(colorGlyphs.getOrDefault(c, c.toString()));
+		}
+
+		return returnString.toString();
+	}
 }
 // [END run_helloworld_service]
 // [END cloudrun_helloworld_service]
